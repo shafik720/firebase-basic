@@ -1,19 +1,27 @@
 import logo from './logo.svg';
 import './App.css';
 import app from './firebaseInit';
-import { getAuth, GoogleAuthProvider } from "firebase/auth";
+import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
-const auth = getAuth(app);
-const provider = new GoogleAuthProvider();
 
-function handleAuthentication(){
-  console.log('go');
-}
 
 function App() {
+
+  const auth = getAuth(app);
+  const provider = new GoogleAuthProvider();
+
+  function handleAuthentication(){
+    signInWithPopup(auth, provider)
+    .then(result=>{
+      console.log(result);
+    }).catch(error=>{
+      console.log(error)
+    })
+  }
   return (
     <div className="App">
-      <button onClick={handleAuthentication}>Google Sign In</button>
+      <h2>Hello</h2>
+      <button onClick={handleAuthentication}>Sign in with google</button>
     </div>
   );
 }
