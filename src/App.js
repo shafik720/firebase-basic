@@ -31,8 +31,13 @@ function App() {
   return (
     <div className="App">
       <h2>Hello</h2>
-      <button onClick={handleAuthentication}>Sign in with google</button>
-      <button onClick={handleSignOut}>Sign Out</button>
+      {
+        user.email ? <button onClick={handleSignOut}>Sign Out</button>
+        :
+        <button onClick={handleAuthentication}>Sign in with google</button> 
+        
+      }      
+      
       <h2>Name : {user.displayName} </h2>
       <h3>Email : {user.email} </h3>
     </div>
